@@ -35,14 +35,19 @@ font-family: 'Open Sans', sans-serif;
     display: flex;
     justify-content: space-between;
     padding: 25px 0;
-    /* font-family: 'Raleway', sans-serif; */
 }
+.nav-logo{
+    width: 30%;
+    max-width: 150px;
+}
+
 .nav-logo img{
-    width: 90px;
+    width: 100%;
 }
 
 .nav-item{
-    min-width: 160px;
+    width: 45%;
+    max-width: 275px;
     color: var(--VeryDarkBlue);
     display: flex;
     font-size: 12px;
@@ -108,18 +113,30 @@ font-family: 'Open Sans', sans-serif;
     font-family: 'Open Sans', sans-serif; 
 }
 
-.get-email input:last-child{
+.get-email input:contact-us-child{
     color: #fff;
     background-color: var(--BrightBlue);
     border-radius: 3px;
     border: none;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
+.get-email input:last-child:hover{
+    cursor: pointer;
+    background-color: hsla(224, 89%, 71%, 0.763);
+}
 
 .wrap2{
     margin-top: 140px;
-    
+    position: relative;
+    background:var(--LightGrayishBlue);
+}
+.wrap2::before{
+    content: '';
     background: url(./images/bg-curve-mobile.svg) no-repeat;
+    position: absolute;
+    width: 100%;
+    top: -52px;
+    bottom: 0;
 }
 
 
@@ -162,6 +179,13 @@ font-family: 'Open Sans', sans-serif;
     position: absolute;
     top: 3px;
     padding-left: 8px;
+}
+
+.link:hover,
+.link img:hover,
+.link:after{
+    color: hsl(170, 47%, 71%);
+    cursor: pointer;
 }
 
 .card{
@@ -302,4 +326,172 @@ footer{
 
 .attribution a {
     color: hsl(228, 45%, 44%);
+}
+
+@media only screen and (min-width: 769px) {
+    h1, h2, p,
+    .get-email,
+    .link{
+        text-align: left;
+    }
+    .nav-bar{
+        margin-top: 30px;
+    }
+
+    
+    .nav-item{
+        font-size: 15px;
+    }
+    .wrap{
+        flex-direction: row-reverse;
+    }
+
+    .pic-area{
+        width: 45%;
+    }
+
+    .txt-area{
+        width: 50%;
+    }
+
+    .txt-area h1{
+        font-size: 40px;
+        font-weight: 600;
+        margin: 65px 33px 0 33px;
+        line-height: 60px;
+    }
+
+    .txt-area p{
+        padding-right: 35px;
+        font-size: 18px;
+    }
+
+    .get-email{
+        margin: 15px 0 0 34px;
+    }
+
+    .get-email input:first-child{
+        width: 50%;
+    }
+
+    .get-email input:last-child{
+        width: 30%;
+        margin-left: 15px;
+    }
+
+    .wrap2::before{
+        content: '';
+        background: url(./images/bg-curve-desktop.svg) no-repeat;
+        position: absolute;
+        width: 100%;
+        top: -105px;
+        bottom: 0;
+    }
+    .txt-area2 h2{
+        font-size: 39px;
+        margin: 0 0 30px 33px;
+    }
+    
+    .txt-area2 p{
+        margin: 20px 0 0 33px;
+        font-size: 17px;
+    }
+
+    .link{
+        margin-left: 33px;
+        font-size: 17px;
+    }
+
+    .link img{
+        width: 28px;
+    }
+
+    .link:after{
+        right: 200px;
+        left: -271px;
+        width: 174px;
+    }
+
+    .card{
+        width: 50%;
+        margin: 60px 0 95px 33px;
+        padding: 23px 15px;
+    }
+
+    .card > img{
+        position: relative;
+        width: 15px;
+        margin-left: 15px;
+    }
+    .card p{
+        font-size: 13px;
+        margin: 10px 0 10px 15px;
+        line-height: 27px;
+    }
+
+    .author{
+        margin-left: 15px;
+    }    
+
+    .author-info h3{
+        margin: 5px 0 0 5px;
+    }
+
+    .author-info p{
+        margin: 0 0 0 5px;
+        font-size: 10px;
+    }
+
+    .sign-up{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .sign-up .txt-area,
+    .sign-up .get-email{
+        width: 48%;
+        padding: 40px 80px 50px 60px;
+        margin: 30px 0 0 0;
+    }
+
+    .sign-up .txt-area h1{
+        font-size: 30px;
+        margin: 10px 0 0 0;
+    }
+    .sign-up .txt-area p{
+        width: 100%;
+        margin: 10px 0 35px 0 ;
+        font-size: 15px;
+        line-height: 25px;
+    }
+
+    .sign-up .get-email input:first-child{
+        width: 90%;
+        height: 45px;
+        padding-left: 25px;
+        margin: 30px 0 0 45px;
+    }
+    .sign-up .get-email input:last-child{
+        width: 40%;
+        height: 45px;
+        margin: 30px 0 0 45px;
+    }
+
+    footer{
+        padding: 80px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .footer-logo{
+        width: 30%;
+    }
+    .about-us,
+    .contact-us,
+    .social-media{
+        width: 20%;
+        text-align: left;
+    }
+    
 }
