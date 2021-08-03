@@ -8,13 +8,7 @@
     --LightGrayishBlue: hsl(240, 75%, 98%);
     --LightGray: hsl(0, 0%, 75%);
 }
-/* 
-Headings, Call-to-actions, Header Navigation
-font-family: 'Raleway', sans-serif;
 
-body
-font-family: 'Open Sans', sans-serif; 
-*/
 
 * {
     padding: 0;
@@ -24,7 +18,10 @@ font-family: 'Open Sans', sans-serif;
 }
 
 .container{
+    margin: auto;
     width: 100%;
+    min-width: 375px;
+    max-width: 1440px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -103,24 +100,45 @@ font-family: 'Open Sans', sans-serif;
     margin: 10px auto;
 }
 
-.get-email input:first-child{
+.get-email input[type="email"]{
     padding-left: 20px;
     font-size: 10px;
 }
 
-.get-email input:first-child::placeholder{
+.get-email input:focus{
+    outline: none;
+    border-color: rgb(218, 83, 83);
+}
+
+.error-msg{
+    display: none;
+}
+
+.get-email .error-msg{
+    color: rgb(218, 83, 83);
+    font-size: 13px;
+    margin: 0;
+    text-align: left;
+}
+
+.get-email.has-error .error-msg{
+    display: block;
+}
+
+.get-email input[type="email"]::placeholder{
     color: var(--LightGray);
     font-family: 'Open Sans', sans-serif; 
 }
 
-.get-email input:contact-us-child{
+.get-email input[type="submit"]{
     color: #fff;
     background-color: var(--BrightBlue);
     border-radius: 3px;
     border: none;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
-.get-email input:last-child:hover{
+
+.get-email input[type="submit"]:hover{
     cursor: pointer;
     background-color: hsla(224, 89%, 71%, 0.763);
 }
@@ -157,12 +175,14 @@ font-family: 'Open Sans', sans-serif;
 }
 
 .link{
+    width: 200px;
     font-size: 13px;
     padding-bottom: 3px;
-    margin-top: 30px;
+    margin: 30px auto 0 auto;
     position: relative;
     color: var(--ModerateCyan);
     font-weight: 300;
+    background: 89% url(./images/icon-arrow.svg) no-repeat;
 }
 .link:after{
     content:"";
@@ -175,17 +195,20 @@ font-family: 'Open Sans', sans-serif;
     border-bottom: 1px solid var(--ModerateCyan);
 }
 
-.link img{
+.link span{
+    width: 20px;
+    height: 20px;
     position: absolute;
-    top: 3px;
-    padding-left: 8px;
+    top: 5px;
+    margin-left: 8px;
 }
 
 .link:hover,
-.link img:hover,
-.link:after{
+.link:hover:after{
+    background: 89% url(./images/icon-arrow-hover.svg) no-repeat;
     color: hsl(170, 47%, 71%);
     cursor: pointer;
+    border-color: hsl(170, 47%, 71%);
 }
 
 .card{
@@ -260,18 +283,30 @@ font-family: 'Open Sans', sans-serif;
     margin-bottom: 65px;
 }
 
+.sign-up .get-email div:first-child{
+    width: 80%;
+    margin: 3px auto;
+
+}
+
 .sign-up .get-email input{
     width: 80%;
     height: 33px;
     margin: 3px auto;
 }
-.sign-up .get-email input:first-child{
+.sign-up .get-email input[type="email"]{
+    width: 100%;
     padding-left: 10px;
     font-size: 10px;
 }
 
-.get-email input:last-child{
+.get-email input[type="submit"]{
     font-size: 10px;
+}
+.sign-up .get-email .error-msg{
+    margin: 2px auto 3px auto;
+    color: #fff;
+    font-weight: 300;
 }
 footer{
     background-color: var(--VeryDarkBlue);
@@ -280,7 +315,6 @@ footer{
     color: #fff;
 }
 .footer-logo > img{
-    fill: #fff;
     margin-bottom: 20px;
 }
 
@@ -300,7 +334,7 @@ footer{
 
 .about-us,
 .contact-us{
-    margin: 45px 0;
+    margin: 95px 0 0 0;
     display: flex;
     flex-direction: column;
 }
@@ -308,6 +342,7 @@ footer{
 .social-media{
     width: 100%;
     text-align: center;
+    margin-top: 95px;
 }
 
 .social-media span{
@@ -319,6 +354,13 @@ footer{
     margin-top: 13px;
 }
 
+footer a:hover,
+footer span:hover{
+    color: var(--BrightBlue);
+    cursor: pointer;
+}
+
+
 .attribution {
     font-size: 11px;
     text-align: center;
@@ -328,6 +370,16 @@ footer{
     color: hsl(228, 45%, 44%);
 }
 
+@media only screen and (min-width: 376px) {
+    .wrap2::before{
+        content: '';
+        background: url(./images/bg-curve-desktop.svg) no-repeat;
+        position: absolute;
+        width: 100%;
+        top: -105px;
+        bottom: 0;
+    }
+}
 @media only screen and (min-width: 769px) {
     h1, h2, p,
     .get-email,
@@ -362,42 +414,44 @@ footer{
     }
 
     .txt-area p{
-        padding-right: 35px;
+        margin-left: 33px;
+        padding-right: 43px;
         font-size: 18px;
     }
 
     .get-email{
         margin: 15px 0 0 34px;
+        display: flex;
     }
 
-    .get-email input:first-child{
-        width: 50%;
+    .get-email input[type="email"]{
+        width: 100%;
+    }
+    .get-email .error-msg{
+        width: 150px;
+        padding: 0;
+       
     }
 
-    .get-email input:last-child{
+    .get-email input[type="submit"]{
         width: 30%;
         margin-left: 15px;
     }
 
-    .wrap2::before{
-        content: '';
-        background: url(./images/bg-curve-desktop.svg) no-repeat;
-        position: absolute;
-        width: 100%;
-        top: -105px;
-        bottom: 0;
-    }
+    
     .txt-area2 h2{
         font-size: 39px;
         margin: 0 0 30px 33px;
     }
     
-    .txt-area2 p{
+    .txt-area2 > p{
         margin: 20px 0 0 33px;
         font-size: 17px;
+        width: 83%;
     }
 
     .link{
+        width: 200px;
         margin-left: 33px;
         font-size: 17px;
     }
@@ -407,12 +461,16 @@ footer{
     }
 
     .link:after{
-        right: 200px;
-        left: -271px;
-        width: 174px;
-    }
+        width: 175px;
+        bottom: -3px;
+        left: -25px;
+        right: 0;
+        margin: auto;
+        border-bottom: 1px solid var(--ModerateCyan);
+        }
 
     .card{
+        min-width: 350px;
         width: 50%;
         margin: 60px 0 95px 33px;
         padding: 23px 15px;
@@ -424,7 +482,7 @@ footer{
         margin-left: 15px;
     }
     .card p{
-        font-size: 13px;
+        font-size: 14px;
         margin: 10px 0 10px 15px;
         line-height: 27px;
     }
@@ -441,41 +499,52 @@ footer{
         margin: 0 0 0 5px;
         font-size: 10px;
     }
-
+    
     .sign-up{
         width: 100%;
         display: flex;
         flex-direction: row;
     }
-
+    
     .sign-up .txt-area,
     .sign-up .get-email{
         width: 48%;
         padding: 40px 80px 50px 60px;
         margin: 30px 0 0 0;
     }
-
+    
     .sign-up .txt-area h1{
         font-size: 30px;
         margin: 10px 0 0 0;
     }
     .sign-up .txt-area p{
-        width: 100%;
+        width: 93%;
         margin: 10px 0 35px 0 ;
         font-size: 15px;
         line-height: 25px;
     }
 
-    .sign-up .get-email input:first-child{
+    .sign-up .get-email div:first-child {
+        margin: 0;
+    }
+
+    .sign-up .get-email input[type="email"]{
         width: 90%;
+        min-width: 250px;
         height: 45px;
         padding-left: 25px;
         margin: 30px 0 0 45px;
     }
-    .sign-up .get-email input:last-child{
+
+    .sign-up .get-email input[type="submit"]{
         width: 40%;
+        min-width: 190px;
         height: 45px;
-        margin: 30px 0 0 45px;
+        margin: 20px 0 0 45px;
+    }
+    .sign-up .get-email .error-msg{
+        width: 90%;
+        margin: 3px 0 0 45px;
     }
 
     footer{
@@ -493,5 +562,5 @@ footer{
         width: 20%;
         text-align: left;
     }
-    
+
 }

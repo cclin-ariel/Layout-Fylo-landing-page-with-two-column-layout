@@ -36,10 +36,14 @@
           Access them wherever you need, share and collaborate with friends,
           family, and co-workers.
         </p>
-        <div class="get-email">
-          <input type="email" placeholder="Enter your email...">
+        <form class="get-email">
+          <div>
+            <input type="email" placeholder="Enter your email...">
+            <p class="error-msg">Please check your email</p>
+
+          </div>
           <input type="submit" value="Get Started">
-        </div>
+        </form>
       </div>
       <div class="wrap wrap2">
         <div class="pic-area">
@@ -57,7 +61,8 @@
           </p>
           <div class="link">
             <a>See how Fylo works
-              <img src="./images/icon-arrow.svg" alt="icon-arrow">
+              <!-- <span src="./images/icon-arrow.svg" alt="icon-arrow"></span> -->
+              <span></span>
             </a>
           </div>
           <div class="card">
@@ -85,14 +90,17 @@
             If you have any questions, our support team would be happy to help you.
           </p>
         </div>
-        <div class="get-email">
-          <input type="email" placeholder="email@example.com">
+        <form class="get-email">
+          <div>
+            <input type="email" placeholder="email@example.com">
+            <p class="error-msg">Please check your email</p>
+          </div>
           <input type="submit" value="Get Started For Free">
-        </div>
+        </form>
       </section>
     <footer>
       <div class="footer-logo">
-        <img src="./images/logo.svg" alt="logo">
+        <img src="./images/logo-white.svg" alt="logo">
         <div class="contact-info">
           <img src="./images/icon-phone.svg" alt="icon-phone">
           <p>Phone: +1-543-123-4567</p>
@@ -130,7 +138,23 @@
   </div>
 
   <script>
+    const emailRule = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
+    const forms = document.querySelectorAll('.get-email')
+    const emails = document.querySelectorAll('[type="email"]');
+    
+    function checkEmail(e){
+      e.preventDefault();
+      emails.forEach(email =>{
+        const result = emailRule.test(email.value);
+        if(!result){
+          email.parentNode.parentNode.classList.add('has-error');
+        }
+        
+      })
 
+    }
+    
+    forms.forEach(form => form.addEventListener('submit', checkEmail));
   </script>
 </body>
 
