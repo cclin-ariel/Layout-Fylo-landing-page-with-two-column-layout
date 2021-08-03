@@ -146,12 +146,9 @@
       e.preventDefault();
       emails.forEach(email =>{
         const result = emailRule.test(email.value);
-        if(!result){
-          email.parentNode.parentNode.classList.add('has-error');
-        }
-        
+        if(!result)email.parentNode.parentNode.classList.add('has-error');
+        if(result)email.parentNode.parentNode.classList.remove('has-error');
       })
-
     }
     
     forms.forEach(form => form.addEventListener('submit', checkEmail));
